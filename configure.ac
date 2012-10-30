@@ -97,9 +97,6 @@ case $host_os in
     ;;
 esac
 
-dnl support building of Windows DLLs
-AC_LIBTOOL_WIN32_DLL
-
 dnl force libtool to build static libraries with PIC on AMD64-Linux & FreeBSD
 AC_MSG_CHECKING([if arch-OS host is AMD64-Linux/FreeBSD (to build static libraries with PIC)])
 case $host in
@@ -124,7 +121,8 @@ case $CC in
 esac
 
 dnl libtool setup
-AC_PROG_LIBTOOL
+LT_INIT([win32-dll pic-only disable-static])
+gl_LD_VERSION_SCRIPT
 
 AC_MSG_CHECKING([if we need CARES_BUILDING_LIBRARY])
 case $host in
@@ -170,9 +168,6 @@ fi
 CARES_CHECK_COMPILER_HALT_ON_ERROR
 CARES_CHECK_COMPILER_ARRAY_SIZE_NEGATIVE
 CARES_CHECK_COMPILER_SYMBOL_HIDING
-
-CARES_CHECK_NO_UNDEFINED
-AM_CONDITIONAL(NO_UNDEFINED, test x$need_no_undefined = xyes)
 
 CARES_CHECK_CURLDEBUG
 AM_CONDITIONAL(CURLDEBUG, test x$want_curldebug = xyes)

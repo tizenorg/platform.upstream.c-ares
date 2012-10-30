@@ -93,12 +93,13 @@ VER=-version-info 2:0:0
 # set age to 0. (c:r:a=0)
 #
 
-if NO_UNDEFINED
-# The -no-undefined flag is crucial for this to build fine on some platforms
-UNDEF = -no-undefined
-endif
+libcares_la_LDFLAGS = -no-undefined $(UNDEF) $(VER)
 
-libcares_la_LDFLAGS = $(UNDEF) $(VER)
+if HAVE_LD_VERSION_SCRIPT
+libcares_la_LDFLAGS += -Wl,--version-script=$(srcdir)/c-ares.map
+else
+libcares_la_LDFLAGS += -export-symbols-regex '^ares_.*'
+endif
 
 # Add -Werror if defined
 CFLAGS += @CARES_CFLAG_EXTRAS@
