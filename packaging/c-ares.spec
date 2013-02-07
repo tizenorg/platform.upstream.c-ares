@@ -1,5 +1,3 @@
-Url:            http://daniel.haxx.se/projects/c-ares
-%define pkg_name c-ares
 
 Name:           c-ares
 Version:        1.7.5
@@ -7,10 +5,11 @@ Release:        1
 License:        MIT
 Summary:        Library for asynchronous name resolves
 Group:          Development/Libraries/C and C++
-Source:         http://daniel.haxx.se/projects/c-ares/%{pkg_name}-%{version}.tar.bz2
+Source:         http://daniel.haxx.se/projects/c-ares/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  pkg-config
 BuildRequires:  libtool
+Url:            http://daniel.haxx.se/projects/c-ares
 
 %description
 c-ares is a C library that performs DNS requests and name resolves
@@ -38,7 +37,7 @@ asynchronously. c-ares is a fork of the library named 'ares', written
 by Greg Hudson at MIT.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%setup -q -n %{name}-%{version}
 
 %build
 autoreconf -fiv
@@ -47,12 +46,11 @@ sed -i -e 's@-g0@-g@g' Makefile
 make %{?_smp_mflags}
 
 %install
-make install DESTDIR=%{buildroot}
-rm -f %{buildroot}%{_libdir}/*.la
+%make_install
 
-%post -p /sbin/ldconfig
+%post -p /sbin/ldconfig -n libcares
 
-%postun -p /sbin/ldconfig
+%postun -p /sbin/ldconfig -n libcares
 
 %files -n libcares
 %defattr(-,root,root)
