@@ -7,6 +7,7 @@ Summary:        Library for asynchronous name resolves
 Group:          Development/Libraries/C and C++
 Source:         http://daniel.haxx.se/projects/c-ares/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
+Source1001: 	c-ares.manifest
 BuildRequires:  pkg-config
 BuildRequires:  libtool
 Url:            http://daniel.haxx.se/projects/c-ares
@@ -38,6 +39,7 @@ by Greg Hudson at MIT.
 
 %prep
 %setup -q -n %{name}-%{version}
+cp %{SOURCE1001} .
 
 %build
 autoreconf -fiv
@@ -53,10 +55,12 @@ make %{?_smp_mflags}
 %postun -p /sbin/ldconfig -n libcares
 
 %files -n libcares
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_libdir}/libcares.so.2*
 
 %files -n libcares-devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_libdir}/libcares.so
 %{_includedir}/*.h
