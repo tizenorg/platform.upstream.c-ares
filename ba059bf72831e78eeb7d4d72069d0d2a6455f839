@@ -1,0 +1,8 @@
+Change-Id: Iba059bf72831e78eeb7d4d72069d0d2a6455f839
+Code-Review+2: Ryan Ware <ware@linux.intel.com>
+Verified+1: Ryan Ware <ware@linux.intel.com>
+Submitted-by: Ryan Ware <ware@linux.intel.com>
+Submitted-at: Mon, 08 Jul 2013 10:06:06 -0700
+Reviewed-on: https://review.tizen.org/gerrit/4616
+Project: platform/upstream/c-ares
+Branch: refs/heads/tizen
