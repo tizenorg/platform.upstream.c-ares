@@ -1,7 +1,6 @@
-
 Name:           c-ares
-Version:        1.7.5
-Release:        1
+Version:        1.10.0
+Release:        0
 License:        MIT
 Summary:        Library for asynchronous name resolves
 Group:          Development/Libraries/C and C++
