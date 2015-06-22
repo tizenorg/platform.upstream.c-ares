@@ -41,6 +41,7 @@ by Greg Hudson at MIT.
 cp %{SOURCE1001} .
 
 %build
+export CFLAGS=`echo $CFLAGS | sed -e 's/ -l[^ ]\+ / /g'`
 autoreconf -fiv
 %configure --enable-symbol-hiding --enable-nonblocking --enable-shared --disable-static --with-pic
 sed -i -e 's@-g0@-g@g' Makefile
