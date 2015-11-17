@@ -251,7 +251,7 @@ static int single_domain(ares_channel channel, const char *name, char **s)
       hostaliases = getenv("HOSTALIASES");
       if (hostaliases)
         {
-          fp = fopen(hostaliases, "re");
+          fp = fopen(hostaliases, "r");
           if (fp)
             {
               while ((status = ares__read_line(fp, &line, &linesize))

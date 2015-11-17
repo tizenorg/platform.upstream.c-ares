@@ -1,0 +1,160 @@
+c-ares (1.10.0_4) unstable; urgency=low
+
+  * Applied OBS policy
+  * Git: external/c-ares
+  * Tag: c-ares_1.10.0_4
+
+ -- Taeksu Shin <taeksu.shin@samsung.com>  Wed, 05 Mar 2014 16:20:33 +0900
+
+c-ares (1.10.0_3) unstable; urgency=low
+
+  * Sync with private and rsa
+  * Git: external/c-ares
+  * Tag: c-ares_1.10.0_3
+
+ -- GangHeok Kim <gangheok.kim@samsung.com>  Wed, 07 Aug 2013 17:29:17 +0900
+
+c-ares (1.10.0-2) unstable; urgency=low
+
+  * Applied prevent fix patch
+  * Git: external/c-ares
+  * Tag: c-ares_1.10.0-2
+
+ -- Taeksu Shin <taeksu.shin@samsung.com>  Thu, 27 Jun 2013 20:16:03 +0900
+
+c-ares (1.10.0-1) unstable; urgency=low
+
+  * Upgraded version to support RCS requirement
+  * Git: external/c-ares
+  * Tag: c-ares_1.10.0-1
+
+ -- Taeksu Shin <taeksu.shin@samsung.com>  Wed, 19 Jun 2013 22:09:10 +0900
+
+c-ares (1.7.4-2) unstable; urgency=low
+
+  * Fixed ares_cancel crash (PLM P130510-0476)
+  * Git: external/c-ares
+  * Tag: c-ares_1.7.4-2
+
+ -- Taeksu Shin <taeksu.shin@samsung.com>  Mon, 13 May 2013 20:44:53 +0900
+
+c-ares (1.7.4-1slp2) unstable; urgency=low
+
+  * Ported to SLP for libcurl
+  * Git: 165.213.180.234:slp/pkgs/c/c-ares
+  * Tag: c-ares_1.7.4-1slp2
+
+ -- Taeksu Shin <taeksu.shin@samsung.com>  Thu, 10 Nov 2011 13:15:19 +0900
+
+c-ares (1.7.4-1) unstable; urgency=low
+
+  [ Gregor Jasny ]
+  * Imported Upstream version 1.7.4
+  * Fix typo in package description (Closes: #600309)
+  * Bump standards to v3.9.1 (no changes needed)
+  * Unapply patches after build
+  * Add new symbols
+
+  [ Andreas Schuldei ]
+  * added Gregor Jasny as uploader
+
+ -- Andreas Schuldei <andreas@debian.org>  Thu, 03 Mar 2011 21:48:00 +0100
+
+c-ares (1.7.3-1) unstable; urgency=low
+
+  [ Gregor Jasny ]
+  * Imported Upstream version 1.7.3
+  * Add ares_parse_mx_reply symbol
+
+ -- Andreas Schuldei <andreas@debian.org>  Fri, 11 Jun 2010 18:33:50 +0200
+
+c-ares (1.7.1-0) unstable; urgency=low
+
+  [ Gregor Jasny ]
+  * Remove quilt dir
+  * Imported Upstream version 1.7.0
+  * Bump standards to v3.8.3 (no changes needed)
+  * Hide private symbols and add Debian symbols file
+  * Use separate build dir
+  * Tightened debhelper dependency
+  * Revert "Use separate build dir"
+  * Imported Upstream version 1.7.1
+  * Add new ares_{get,set}_servers symbols
+  * Bump standards to v3.8.4 (no changes needed)
+  * Switch to dpkg-source 3.0 (quilt) format
+
+ -- Andreas Schuldei <andreas@debian.org>  Fri, 30 Apr 2010 21:27:20 +0200
+
+c-ares (1.6.0-2) unstable; urgency=low
+
+  [ Gregor Jasny ]
+  * Add git-buildpackage config
+  * Imported Upstream version 1.6.0
+  * New Upstream Version 1.6.0
+  * Removed no_maxhostnamelen patch
+  * Add Vcs-* fields to control file
+  * Make package binNMUable (lintian: not-binnmuable-any-depends-any)
+  * Add watch file (lintian: debian-watch-file-is-missing)
+  * Updated standards to 3.8.1 (no changes needed)
+  * Remove duplicate section (lintian: binary-control-field-duplicates-
+    source)
+  * Use debhelper 7 and its tiny rules script
+  * Use copyright sign instead of (c) to make lintian happy
+  * Add some words to the -dev package (lintian: duplicate-short-
+    description)
+
+ -- Andreas Schuldei <andreas@debian.org>  Mon, 25 May 2009 13:23:43 +0200
+
+c-ares (1.6.0-1) unstable; urgency=low
+
+  * New Upstream Version
+
+ -- Gregor Jasny <gjasny@googlemail.com>  Mon, 04 May 2009 22:01:20 +0200
+
+c-ares (1.5.2-4) unstable; urgency=low
+
+  * fixing linitan warnings: standards versions, clean target in rules
+  * fix memory leak in MAXHOSTNAMELEN patch
+
+ -- Andreas Schuldei <andreas@jesaja.schuldei.org>  Mon, 30 Jun 2008 16:33:20 +0200
+
+c-ares (1.5.2-3) unstable; urgency=low
+
+  * remove the need to have MAXHOSTNAMELEN, to make hurd build
+
+ -- Andreas Schuldei <andreas@debian.org>  Sun, 29 Jun 2008 01:55:35 +0200
+
+c-ares (1.5.2-2) unstable; urgency=low
+
+  * file conflicts (Closes: #484574)
+
+ -- Andreas Schuldei <andreas@debian.org>  Thu, 05 Jun 2008 10:00:56 +0200
+
+c-ares (1.5.2-1) unstable; urgency=low
+
+  * missing copyright information in debian/copyright (Closes: #484517)
+
+ -- Andreas Schuldei <andreas@debian.org>  Wed, 04 Jun 2008 20:22:59 +0200
+
+c-ares (1.5.2-0) unstable; urgency=low
+
+  * new upstream release: 1.5.2
+  * Conflict with libcares2 (Closes: #478588)
+  * libc-ares1 contains libcares.2.so (Closes: #480589)
+
+ -- Andreas Schuldei <andreas@debian.org>  Sat, 31 May 2008 01:08:35 +0200
+
+c-ares (1.5.1-0) unstable; urgency=low
+
+  * new upstream release: 1.5.1
+  * file conflicts between packages (Closes: #451343)
+  * switch to pkgconfig, disable .la
+
+ -- Andreas Schuldei <andreas@debian.org>  Mon, 26 Nov 2007 14:09:46 +0100
+
+c-ares (1.4.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #359794) packaging c-ares 
+
+ -- Andreas Schuldei <andreas@debian.org>  Sat, 21 Jul 2007 17:44:06 +0200
+

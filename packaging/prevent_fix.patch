@@ -1,0 +1,49 @@
+--- a/ares_options.c
++++ b/ares_options.c
+@@ -158,6 +158,10 @@ int ares_set_servers_csv(ares_channel channel,
+      return ARES_SUCCESS; /* blank all servers */
+
+   csv = malloc(i + 2);
++  if (!csv) {
++     return ARES_ENOMEM;
++  }
++
+   strcpy(csv, _csv);
+   if (csv[i-1] != ',') { /* make parsing easier by ensuring ending ',' */
+     csv[i] = ',';
+--- a/ares_parse_soa_reply.c
++++ b/ares_parse_soa_reply.c
+@@ -85,8 +85,10 @@ ares_parse_soa_reply(const unsigned char *abuf, int alen,
+
+   /* allocate result struct */
+   soa = ares_malloc_data(ARES_DATATYPE_SOA_REPLY);
+-  if (!soa)
+-    return ARES_ENOMEM;
++  if (!soa) {
++    status = ARES_ENOMEM;
++    goto failed_soa;
++  }
+
+   /* nsname */
+   status = ares__expand_name_for_response(aptr, abuf, alen, &soa->nsname, &len);
+@@ -121,6 +123,8 @@ failed:
+
+ failed_stat:
+   ares_free_data(soa);
++
++failed_soa:
+   if (qname)
+     free(qname);
+   if (rr_name)
+--- a/ares_process.c
++++ b/ares_process.c
+@@ -913,7 +913,8 @@ static int configure_socket(ares_socket_t s, int family, ares_channel channel)
+     struct sockaddr_in6 sa6;
+   } local;
+
+-  setsocknonblock(s, TRUE);
++  if (setsocknonblock(s, TRUE) == -1)
++    return -1;
+
+ #if defined(FD_CLOEXEC) && !defined(MSDOS)
+   /* Configure the socket fd as close-on-exec. */

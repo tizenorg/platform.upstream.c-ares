@@ -137,7 +137,7 @@ AC_DEFUN([_XC_CHECK_VAR_CFLAGS], [
   for xc_word in $CFLAGS; do
     case "$xc_word" in
       -D*)
-        xc_bad_var_cflags=yes
+        xc_bad_var_cflags=no
         ;;
       -U*)
         xc_bad_var_cflags=yes

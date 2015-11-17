@@ -1,69 +1,48 @@
-Name:           c-ares
-Version:        1.10.0
-Release:        0
-License:        MIT
-Summary:        Library for asynchronous name resolves
-Group:          Development/Libraries/C and C++
-Source:         http://daniel.haxx.se/projects/c-ares/%{name}-%{version}.tar.bz2
-Source2:        baselibs.conf
-Source1001: 	c-ares.manifest
-BuildRequires:  pkg-config
-BuildRequires:  libtool
-Url:            http://daniel.haxx.se/projects/c-ares
+Name:       c-ares
+Summary:    library for asynchronous name resolves (development files)
+Version:    1.10.0
+Release:    1
+Group:      System/Libraries
+License:    MIT
+Source0:    %{name}-%{version}.tar.gz
+Source1001: c-ares.manifest
+Patch1:     prevent_fix.patch
+BuildRequires:  gettext-devel
 
 %description
-c-ares is a C library that performs DNS requests and name resolves
-asynchronously. c-ares is a fork of the library named 'ares', written
-by Greg Hudson at MIT.
+library for asynchronous name resolves (development files)
 
-%package -n libcares
-Summary:        Library for asynchronous name resolves
-Group:          Development/Libraries/C and C++
 
-%description -n libcares
-c-ares is a C library that performs DNS requests and name resolves
-asynchronously. c-ares is a fork of the library named 'ares', written
-by Greg Hudson at MIT.
+%package devel 
+Summary:    library for asynchronous name resolves (development files) (Developement)
+Group:      Development/Languages
+Requires:   %{name} = %{version}-%{release}
 
-%package -n libcares-devel
-Summary:        Library for asynchronous name resolves
-Group:          Development/Libraries/C and C++
-Requires:       libcares = %{version}
-Requires:       glibc-devel
-
-%description -n libcares-devel
-c-ares is a C library that performs DNS requests and name resolves
-asynchronously. c-ares is a fork of the library named 'ares', written
-by Greg Hudson at MIT.
+%description devel
+library for asynchronous name resolves (development files) (Developement)
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 cp %{SOURCE1001} .
+%patch1 -p1
 
 %build
-autoreconf -fiv
-%configure --enable-symbol-hiding --enable-nonblocking --enable-shared --disable-static --with-pic
-sed -i -e 's@-g0@-g@g' Makefile
-make %{?_smp_mflags}
+./buildconf
+./configure --prefix=/usr --enable-shared --enable-symbol-hiding
+make %{?_smp_flags}
 
 %install
 %make_install
 
-%post -p /sbin/ldconfig -n libcares
+%remove_docs
 
-%postun -p /sbin/ldconfig -n libcares
-
-%files -n libcares
+%files
 %manifest %{name}.manifest
-%defattr(-,root,root)
-%{_libdir}/libcares.so.2*
+/usr/lib/libcares.so.2
+/usr/lib/libcares.so.2.1.0
 
-%files -n libcares-devel
-%manifest %{name}.manifest
-%defattr(-,root,root)
-%{_libdir}/libcares.so
-%{_includedir}/*.h
-%{_mandir}/man3/ares_*
-%{_libdir}/pkgconfig/libcares.pc
+%files devel 
+/usr/include/*.h
+/usr/lib/libcares.so
+/usr/lib/pkgconfig/libcares.pc
 
-%changelog

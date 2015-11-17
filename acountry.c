@@ -562,6 +562,8 @@ static void find_country_from_cname(const char *cname, struct in_addr addr)
       if ((z0 != 'z' && z1 != 'z') || dot != cname+4)
         {
           printf("Unexpected CNAME %s (ver_1)\n", cname);
+	  if (ccopy)
+		  free(ccopy);
           return;
         }
     }
@@ -572,12 +574,16 @@ static void find_country_from_cname(const char *cname, struct in_addr addr)
       if (z0 != 'z' && z1 != 'z')
         {
           printf("Unexpected CNAME %s (ver_2)\n", cname);
+	  if (ccopy)
+		  free(ccopy);
           return;
         }
     }
   else
     {
       printf("Unexpected CNAME %s (ver?)\n", cname);
+      if (ccopy)
+	      free(ccopy);
       return;
     }
 

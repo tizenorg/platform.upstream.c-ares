@@ -215,7 +215,7 @@ static int file_lookup(struct ares_addr *addr, struct hostent **host)
     return ARES_ENOTFOUND;
 #endif
 
-  fp = fopen(PATH_HOSTS, "re");
+  fp = fopen(PATH_HOSTS, "r");
   if (!fp)
     {
       error = ERRNO;
