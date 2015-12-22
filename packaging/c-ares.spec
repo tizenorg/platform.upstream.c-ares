@@ -48,6 +48,8 @@ make %{?_smp_mflags}
 
 %install
 %make_install
+mkdir -p %{buildroot}/usr/share/license
+cp LICENSE %{buildroot}/usr/share/license/%{name}
 
 %post -p /sbin/ldconfig -n libcares
 
@@ -65,5 +67,4 @@ make %{?_smp_mflags}
 %{_includedir}/*.h
 %{_mandir}/man3/ares_*
 %{_libdir}/pkgconfig/libcares.pc
-
-%changelog
+/usr/share/license/%{name}
