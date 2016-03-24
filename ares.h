@@ -294,115 +294,115 @@ typedef int  (*ares_sock_create_callback)(ares_socket_t socket_fd,
                                           int type,
                                           void *data);
 
-CARES_EXTERN int ares_library_init(int flags);
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_library_init(int flags);
 
-CARES_EXTERN void ares_library_cleanup(void);
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_library_cleanup(void);
 
-CARES_EXTERN const char *ares_version(int *version);
+CARES_EXTERN __attribute__ ((visibility ("default"))) const char *ares_version(int *version);
 
-CARES_EXTERN int ares_init(ares_channel *channelptr);
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_init(ares_channel *channelptr);
 
-CARES_EXTERN int ares_init_options(ares_channel *channelptr,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_init_options(ares_channel *channelptr,
                                    struct ares_options *options,
                                    int optmask);
 
-CARES_EXTERN int ares_save_options(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_save_options(ares_channel channel,
                                    struct ares_options *options,
                                    int *optmask);
 
-CARES_EXTERN void ares_destroy_options(struct ares_options *options);
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_destroy_options(struct ares_options *options);
 
-CARES_EXTERN int ares_dup(ares_channel *dest,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_dup(ares_channel *dest,
                           ares_channel src);
 
-CARES_EXTERN void ares_destroy(ares_channel channel);
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_destroy(ares_channel channel);
 
-CARES_EXTERN void ares_cancel(ares_channel channel);
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_cancel(ares_channel channel);
 
 /* These next 3 configure local binding for the out-going socket
  * connection.  Use these to specify source IP and/or network device
  * on multi-homed systems.
  */
-CARES_EXTERN void ares_set_local_ip4(ares_channel channel, unsigned int local_ip);
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_set_local_ip4(ares_channel channel, unsigned int local_ip);
 
 /* local_ip6 should be 16 bytes in length */
-CARES_EXTERN void ares_set_local_ip6(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_set_local_ip6(ares_channel channel,
                                      const unsigned char* local_ip6);
 
 /* local_dev_name should be null terminated. */
-CARES_EXTERN void ares_set_local_dev(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_set_local_dev(ares_channel channel,
                                      const char* local_dev_name);
 
-CARES_EXTERN void ares_set_socket_callback(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_set_socket_callback(ares_channel channel,
                                            ares_sock_create_callback callback,
                                            void *user_data);
 
-CARES_EXTERN void ares_send(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_send(ares_channel channel,
                             const unsigned char *qbuf,
                             int qlen,
                             ares_callback callback,
                             void *arg);
 
-CARES_EXTERN void ares_query(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_query(ares_channel channel,
                              const char *name,
                              int dnsclass,
                              int type,
                              ares_callback callback,
                              void *arg);
 
-CARES_EXTERN void ares_search(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_search(ares_channel channel,
                               const char *name,
                               int dnsclass,
                               int type,
                               ares_callback callback,
                               void *arg);
 
-CARES_EXTERN void ares_gethostbyname(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_gethostbyname(ares_channel channel,
                                      const char *name,
                                      int family,
                                      ares_host_callback callback,
                                      void *arg);
 
-CARES_EXTERN int ares_gethostbyname_file(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_gethostbyname_file(ares_channel channel,
                                          const char *name,
                                          int family,
                                          struct hostent **host);
 
-CARES_EXTERN void ares_gethostbyaddr(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_gethostbyaddr(ares_channel channel,
                                      const void *addr,
                                      int addrlen,
                                      int family,
                                      ares_host_callback callback,
                                      void *arg);
 
-CARES_EXTERN void ares_getnameinfo(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_getnameinfo(ares_channel channel,
                                    const struct sockaddr *sa,
                                    ares_socklen_t salen,
                                    int flags,
                                    ares_nameinfo_callback callback,
                                    void *arg);
 
-CARES_EXTERN int ares_fds(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_fds(ares_channel channel,
                           fd_set *read_fds,
                           fd_set *write_fds);
 
-CARES_EXTERN int ares_getsock(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_getsock(ares_channel channel,
                               ares_socket_t *socks,
                               int numsocks);
 
-CARES_EXTERN struct timeval *ares_timeout(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) struct timeval *ares_timeout(ares_channel channel,
                                           struct timeval *maxtv,
                                           struct timeval *tv);
 
-CARES_EXTERN void ares_process(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_process(ares_channel channel,
                                fd_set *read_fds,
                                fd_set *write_fds);
 
-CARES_EXTERN void ares_process_fd(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_process_fd(ares_channel channel,
                                   ares_socket_t read_fd,
                                   ares_socket_t write_fd);
 
-CARES_EXTERN int ares_create_query(const char *name,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_create_query(const char *name,
                                    int dnsclass,
                                    int type,
                                    unsigned short id,
@@ -411,7 +411,7 @@ CARES_EXTERN int ares_create_query(const char *name,
                                    int *buflen,
                                    int max_udp_size);
 
-CARES_EXTERN int ares_mkquery(const char *name,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_mkquery(const char *name,
                               int dnsclass,
                               int type,
                               unsigned short id,
@@ -419,13 +419,13 @@ CARES_EXTERN int ares_mkquery(const char *name,
                               unsigned char **buf,
                               int *buflen);
 
-CARES_EXTERN int ares_expand_name(const unsigned char *encoded,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_expand_name(const unsigned char *encoded,
                                   const unsigned char *abuf,
                                   int alen,
                                   char **s,
                                   long *enclen);
 
-CARES_EXTERN int ares_expand_string(const unsigned char *encoded,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_expand_string(const unsigned char *encoded,
                                     const unsigned char *abuf,
                                     int alen,
                                     unsigned char **s,
@@ -502,56 +502,56 @@ struct ares_soa_reply {
 ** so written.
 */
 
-CARES_EXTERN int ares_parse_a_reply(const unsigned char *abuf,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_parse_a_reply(const unsigned char *abuf,
                                     int alen,
                                     struct hostent **host,
                                     struct ares_addrttl *addrttls,
                                     int *naddrttls);
 
-CARES_EXTERN int ares_parse_aaaa_reply(const unsigned char *abuf,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_parse_aaaa_reply(const unsigned char *abuf,
                                        int alen,
                                        struct hostent **host,
                                        struct ares_addr6ttl *addrttls,
                                        int *naddrttls);
 
-CARES_EXTERN int ares_parse_ptr_reply(const unsigned char *abuf,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_parse_ptr_reply(const unsigned char *abuf,
                                       int alen,
                                       const void *addr,
                                       int addrlen,
                                       int family,
                                       struct hostent **host);
 
-CARES_EXTERN int ares_parse_ns_reply(const unsigned char *abuf,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_parse_ns_reply(const unsigned char *abuf,
                                      int alen,
                                      struct hostent **host);
 
-CARES_EXTERN int ares_parse_srv_reply(const unsigned char* abuf,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_parse_srv_reply(const unsigned char* abuf,
                                       int alen,
                                       struct ares_srv_reply** srv_out);
 
-CARES_EXTERN int ares_parse_mx_reply(const unsigned char* abuf,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_parse_mx_reply(const unsigned char* abuf,
                                       int alen,
                                       struct ares_mx_reply** mx_out);
 
-CARES_EXTERN int ares_parse_txt_reply(const unsigned char* abuf,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_parse_txt_reply(const unsigned char* abuf,
                                       int alen,
                                       struct ares_txt_reply** txt_out);
 
-CARES_EXTERN int ares_parse_naptr_reply(const unsigned char* abuf,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_parse_naptr_reply(const unsigned char* abuf,
                                         int alen,
                                         struct ares_naptr_reply** naptr_out);
 
-CARES_EXTERN int ares_parse_soa_reply(const unsigned char* abuf,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_parse_soa_reply(const unsigned char* abuf,
 				      int alen,
 				      struct ares_soa_reply** soa_out);
 
-CARES_EXTERN void ares_free_string(void *str);
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_free_string(void *str);
 
-CARES_EXTERN void ares_free_hostent(struct hostent *host);
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_free_hostent(struct hostent *host);
 
-CARES_EXTERN void ares_free_data(void *dataptr);
+CARES_EXTERN __attribute__ ((visibility ("default"))) void ares_free_data(void *dataptr);
 
-CARES_EXTERN const char *ares_strerror(int code);
+CARES_EXTERN __attribute__ ((visibility ("default"))) const char *ares_strerror(int code);
 
 /* TODO:  Hold port here as well. */
 struct ares_addr_node {
@@ -563,20 +563,20 @@ struct ares_addr_node {
   } addr;
 };
 
-CARES_EXTERN int ares_set_servers(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_set_servers(ares_channel channel,
                                   struct ares_addr_node *servers);
 
 /* Incomming string format: host[:port][,host[:port]]... */
-CARES_EXTERN int ares_set_servers_csv(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_set_servers_csv(ares_channel channel,
                                       const char* servers);
 
-CARES_EXTERN int ares_get_servers(ares_channel channel,
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_get_servers(ares_channel channel,
                                   struct ares_addr_node **servers);
 
-CARES_EXTERN const char *ares_inet_ntop(int af, const void *src, char *dst,
+CARES_EXTERN __attribute__ ((visibility ("default"))) const char *ares_inet_ntop(int af, const void *src, char *dst,
                                         ares_socklen_t size);
 
-CARES_EXTERN int ares_inet_pton(int af, const char *src, void *dst);
+CARES_EXTERN __attribute__ ((visibility ("default"))) int ares_inet_pton(int af, const char *src, void *dst);
 
 
 #ifdef  __cplusplus

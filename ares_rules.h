@@ -70,7 +70,7 @@
 
 #ifndef CARES_SIZEOF_LONG
 #  error "CARES_SIZEOF_LONG definition is missing!"
-   Error Compilation_aborted_CARES_SIZEOF_LONG_is_missing
+   __attribute__ ((visibility ("default"))) Error Compilation_aborted_CARES_SIZEOF_LONG_is_missing
 #endif
 
 #ifndef CARES_TYPEOF_ARES_SOCKLEN_T
