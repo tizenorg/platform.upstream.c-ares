@@ -41,6 +41,9 @@ by Greg Hudson at MIT.
 cp %{SOURCE1001} .
 
 %build
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
+  
 autoreconf -fiv
 %configure --enable-symbol-hiding --enable-nonblocking --enable-shared --disable-static --with-pic
 sed -i -e 's@-g0@-g@g' Makefile
